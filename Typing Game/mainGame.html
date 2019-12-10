@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Vue Template">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>Typing Game</title>
+</head>
+<style>
+	.row{
+		margin: auto;
+		display: inline-block;
+		width: 19%;
+		height: 500px;
+		border: 1px solid black;
+		text-align: center;
+	}
+	div div{
+		width: 100%;
+		border: 1px solid black;
+		position: relative;
+		animation-name: falling;
+		animation-duration: 10.5s;
+		
+	}
+	
+	@keyframes falling {
+		from {top:0%;}
+		to{top:96%;}
+	}
+</style>
+<body onload="loadGame()" onkeypress="myFunction(event)">
+	<span> 
+		<div class="row" id="row1"></div>
+		<div class="row" id="row2"></div>
+		<div class="row" id="row3"></div>
+		<div class="row" id="row4"></div>
+		<div class="row" id="row5"></div>
+	</span>
+	<p id="text"> </p>
+
+<script>
+	var buffer = "";
+	var words = [];
+	var extraWords = ["hamburger", "taco", "lettuce", "orange", "knife", "hotdog", "monkey", "dog", "rabbit", "cat", "guinea", "knight", "cabbage", "hotel"]
+	var startTime = Date.now();
+	var addWordTimer;
+	var gameEnded = false;
+	
+	
+	
+	
+	function myFunction() {
+		if(!gameEnded){
+		  var x = event.key;
+		  var matches = false;
+		  buffer = buffer + x;
+		  
+		  for(i=0; i < words.length; i++){
+			var word = words[i];
+			if(buffer == word.substring(0,buffer.length)){
+				matches = true;
+				boldedWord = word.substring(0,buffer.length).bold() + word.substring(buffer.length, word.length);
+				document.getElementById(word).innerHTML = boldedWord;
+				if(buffer.length == word.length){
+					document.getElementById(word).remove();
+					addWord(i+1);
+					buffer = "";
+					
+				}
+			}else{
+				document.getElementById(word).innerText = word;
+			}
+		  }
+		  if(matches == false){
+			buffer = "";
+		  }
+		  
+		  document.getElementById("text").innerHTML = buffer;
+	  }
+	}
+	
+	
+	
+	function addWord(row){
+		if(!gameEnded){
+			var randomNum = Math.floor(Math.random() * extraWords.length);
+			var word = extraWords[randomNum];
+			
+			words[row-1] = word;
+			
+			var div = document.createElement("div");
+			div.id = word;
+			div .innerHTML = word;
+			document.getElementById("row"+row).appendChild(div);
+			div.addEventListener("animationend", listener, false);
+		}
+	}
+	
+	function loadGame(){
+		for(i=1; i<6; i++){
+			addWord(i);
+		}
+		//alert(words);
+		//addWordTimer = setInterval(addWord, 1500)
+	}
+	
+	function listener(event){
+		if(event.type == "animationend" && !gameEnded){
+			alert("Game Over!\nYour score is: "+(Date.now()-startTime));
+			gameEnded = true;
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

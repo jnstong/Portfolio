@@ -1,0 +1,107 @@
+if(!gameEnded){<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Vue Template">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>Typing Game</title>
+</head>
+<style>
+	span div{
+		margin: auto;
+		display: inline-block;
+		width: 19%;
+		height: 500px;
+		border: 1px solid black;
+		text-align: center;
+	}
+</style>
+<body onload="loadGame()" onkeypress="myFunction(event)">
+	<span> 
+		<div id="row1">text1 </div>
+		<div id="row2">text2 </div>
+		<div id="row3">text3</div>
+		<div id="row4">text4</div>
+		<div id="row5">text5</div>
+	</span>
+	<p id="words"></p>
+	<p id="text"> </p>
+
+<script>
+	var buffer = "";
+	var words = [];
+	var extraWords = ["hamburger", "taco", "lettuce", "orange", "knife", "hotdog", "monkey", "dog", "rabbit", "cat", "guinea", "knight", "cabbage", "hotel"]
+	var startTime = Date.now();
+	var addWordTimer;
+	
+	
+	
+	
+	function myFunction() {
+	  var x = event.key;
+	  var matches = false;
+	  buffer = buffer + x;
+	  
+	  for(i=0; i < words.length; i++){
+		var word = words[i];
+		if(buffer == word.substring(0,buffer.length)){
+			matches = true;
+			boldedWord = word.substring(0,buffer.length).bold() + word.substring(buffer.length, word.length);
+			document.getElementById(word).innerHTML = boldedWord;
+			if(buffer.length == word.length){
+				words.splice(i, 1);
+				document.getElementById(word).remove();
+				buffer = "";
+				if(words.length  < 5 && extraWords.length > 0){
+					clearInterval(addWordTimer);
+					addWordTimer = setInterval(addWord, 1500)
+					addWord();
+				}
+			}
+		}else{
+			document.getElementById(word).innerText = word;
+		}
+	  }
+	  if(matches == false){
+		buffer = "";
+	  }
+	  
+	  document.getElementById("text").innerHTML = buffer;
+	}
+	
+	function addElement(word){
+		var div = document.createElement("div");
+		div.id = word;
+		div.innerHTML = word+"<br>";
+		document.getElementById("words").insertBefore(div, document.getElementById("words").childNodes[0]);
+	}
+	
+	function addWord(){
+		if(words.length+1 > 10){
+			alert("Game Over!\nYour score is: "+(Date.now()-startTime));
+			clearInterval(addWordTimer);
+		}else{
+			var randomNum = Math.floor(Math.random() * extraWords.length);
+			//alert(extraWords);
+			words.push(extraWords[randomNum]);
+			addElement(extraWords[randomNum]);
+			extraWords.splice(randomNum, 1);
+			if(extraWords.length == 0){
+				clearInterval(addWordTimer);
+			}
+		}
+		
+	}
+	
+	function loadGame(){
+		for(i=0; i<5; i++){
+			addWord();
+		}
+		addWordTimer = setInterval(addWord, 1500)
+	}
+	
+	
+</script>
+</body>
+</html>
