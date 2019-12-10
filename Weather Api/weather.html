@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Current Weather</title>
+	<link rel="stylesheet" type="text/css" href="weather.css">
+</head>
+<body>
+
+  <h1>City Forecast</h1><br>
+  City:
+  <input type="text" id="city"/>
+  <br>
+  <input type="button" value="Submit" onclick="getData()"/>
+  <br>
+  <br>
+  <span id="container">
+	<div id="cityName">Name Here</div>
+	<!--<div id="time">Time Here</div>-->
+	<div id="weatherDescription">Description Here</div>
+	<div class="weatherInfo">
+		<img id="icon"> 
+		<div id="temperature">35 F</div>
+		<span id="smallInfo">
+			<div id="pressure">Pressure</div>
+			<div id="humidity">Humidity</div>
+			<div id="windSpeed">Wind Speed</div>
+		</span>
+	</div>
+	
+  </span>
+  <img id="icon">
+  
+  <script src="weather.js"></script>
+  
+  </body>
+</html>

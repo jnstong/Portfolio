@@ -1,0 +1,47 @@
+	body{
+		text-align: center;
+	}
+	#container{
+		position: absolute;
+		border: 1px solid gray;
+		border-radius: 15px;
+		min-width: 450px;
+		display: none;
+		text-align: left;
+		transform:translate(-50%, 0%);
+	}
+	
+	.weatherInfo{
+		<!--column-count: 3;
+		column-rule: 1px solid black;-->
+		overflow: auto;
+	}
+	
+	#temperature{
+		font-size: 45px;
+		float:left;
+		width:33%;
+		top: 50%;
+		transform:translate(0%,50%);
+	}
+	#icon{
+		float:left;
+	}
+	#smallInfo{
+		float:left;
+		
+		
+		top: 50%;
+		transform:translate(0%,50%);
+	}
+	
+	#cityName{
+		font-size: 30px;
+	}
+	
+	#time{
+		font-size: 25px;
+	}
+	#weatherDescription{
+		font-size: 25px;
+	}
