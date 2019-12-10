@@ -1,0 +1,572 @@
+/*##############################################################*/
+/*                           DEFAULT                            */
+/*##############################################################*/
+  /* --------------- */
+  /*    VIEWPORT     */
+  /* --------------- */
+  @viewport
+  {
+    width: device-width ;
+    zoom: 0.0 ; /* Potentially mess with this for mobile Zoom issues */
+  } 
+ 
+  /* --------------- */
+  /*      HTML       */
+  /* --------------- */
+  html
+  {
+    background-color: rgb(28, 24, 16);
+    font-size: 100%;
+  }
+  /* ~~~~~~~~~~~~~~~ */
+  /*      TEXT       */
+  /* ~~~~~~~~~~~~~~~ */ 
+    
+    /* --------------- */
+    /*   FONT FACE     */
+    /* --------------- */
+    @font-face
+    {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      src: url(sansation_light.woff);
+    }
+    /* --------------- */
+    /*    HEADER 2     */ 
+    /* --------------- */
+    h2 
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    /* --------------- */
+    /*    PARAGRAPH    */
+    /* --------------- */
+    p
+    {
+      color: white;
+      text-align: left;
+    }
+
+  /* ---------------- */
+  /*  GAME CONTAINER  */
+  /* ---------------- */
+  #GameSection
+  {
+    position: relative;
+    text-align: center;
+    /*background-image: url(images/pokerbg.png);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  /* ---------------------- */
+  /*  GAME SETUP CONTAINER  */
+  /* ---------------------- */
+  #SetupSection
+  {
+    position: relative;
+    text-align: center;
+  }
+  
+  /* ~~~~~~~~~~~~~~~ */
+  /*   LAYOUT GRID   */
+  /* ~~~~~~~~~~~~~~~ */
+
+  /* ---------------- */
+  /*    .WRAPPER      */
+  /* ---------------- */
+  /* The Game Container's Main grid (ROW1: 3 Columns, ROW2: 1 Column, ROW3: 3 Columns) */
+  .wrapper
+  {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    height: 100%;
+    gap: 1em;
+  }
+  /* ---------------- */
+  /*   .WRAPPER DIV   */
+  /* ---------------- */
+  /* Column Cells (Divs) */
+  .wrapper > div
+  {
+    padding: 1em;
+  }
+
+  /* ---------------- */
+  /*  .INNERWRAPPER   */
+  /* ---------------- */
+  /* The Middle Row's Inner Grid Layout (ROW1: 5 Columns (for cards)) */
+  .innerWrapper
+  {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    height: 100%;
+  }
+    
+    /* --------------- */
+    /*  TOP LEFT DIV   */
+    /* --------------- */
+    /* Opponent's Name */
+    #topLeftDiv
+    {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
+      /* --------------- */
+      /*  OPPONENT NAME  */
+      /* --------------- */
+      #opponentName
+      {
+        color:red;
+      }    
+    /* --------------- */
+    /* TOP MIDDLE DIV  */
+    /* --------------- */
+    /* Opponent's Deck */
+    #topMiddleDiv
+    {
+      color: white;
+    }
+    /* ------------------ */
+    /* TOP MIDDLE DIV IMG */
+    /* ------------------ */
+    /* Opponent's Deck Image */
+    #topMiddleDiv img
+    {
+      height: 100%;
+      width: auto;
+      align-content: center;
+      cursor: pointer;
+    }
+    /* --------------- */
+    /*  TOP RIGHT DIV  */
+    /* --------------- */
+    /* Music Button */
+    #topRightDiv
+    {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-self: center;
+    }
+    /* ------------------ */
+    /* TOP RIGHT DIV IMG  */
+    /* ------------------ */    
+    /* Music Button Image */
+    #topRightDiv img
+    {
+      height : 2em;
+      width: 2em;
+    }
+    /* --------------- */
+    /* BOTTOM LEFT DIV */
+    /* --------------- */
+    /* Player's Name */
+    #bottomLeftDiv
+    {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
+    /* --------------- */
+    /* BOTTOM RIGHT DIV */
+    /* --------------- */
+    /* Player's Name */
+    #bottomRightDiv
+    {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
+    /* --------------- */
+    /*   PLAYER NAME   */
+    /* --------------- */
+    #playerName
+    {
+      color: lime;
+    }
+    /* ??? REDUNDANT ??? */
+    .class
+    {
+      height: 100%;
+      width: auto;
+      align-content: center;
+      cursor: pointer;
+    }
+    /* --------------- */
+    /*   MIDDLE DIV    */
+    /* --------------- */
+    #middleDiv
+    {
+      color: white;
+      width: 60%;
+      padding-left: 15%;
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+    /* --------------- */
+    /* MIDDLE DIV IMG  */
+    /* --------------- */
+    #middleDiv img
+    {
+      height: 100%;
+      width: auto;
+      align-content: center;
+      cursor: pointer;
+    }
+    /* --------------- */
+    /*     CARD 1      */
+    /* --------------- */
+    /* First Card (left most) */
+    #middleDiv.card1
+    {
+      z-index: 1;
+      grid-column-start: 1;
+    }
+    /* --------------- */
+    /*     CARD 2      */
+    /* --------------- */
+    /* Second Card  (second from the left) */
+    #middleDiv.card2
+    {
+      z-index: 2;
+      grid-column-start: 1;
+    }
+    /* --------------- */
+    /*     CARD 3      */
+    /* --------------- */
+    /* Third Card (middle card) */
+    #middleDiv.card3
+    {
+      z-index: 3;
+    }
+    /* --------------- */
+    /*     CARD 4      */
+    /* --------------- */
+    /* Fourth Card  (second from the right) */
+    #middleDiv.card4
+    {
+      z-index: 4;
+    }
+    /* --------------- */
+    /*     CARD 5      */
+    /* --------------- */
+    /* Fifth Card (right most) */
+    #middleDiv.card5
+    {
+      z-index: 5;
+    }
+    /* ----------------- */
+    /* BOTTOM MIDDLE DIV */
+    /* ----------------- */    
+    #bottomMiddleDiv
+    {
+      color: white;
+    }
+    /* --------------------- */
+    /* BOTTOM MIDDLE DIV IMG */
+    /* --------------------- */    
+    #bottomMiddleDiv img
+    {
+      height: 100%;
+      width: auto;
+      align-content: center;
+      cursor: pointer;
+    }
+
+  /* ~~~~~~~~~~~~~~~ */
+  /*      MISC.      */
+  /* ~~~~~~~~~~~~~~~ */
+    /* --------------- */
+    /*     BUTTON      */
+    /* --------------- */  
+    .btn
+    {
+      background-color: grey;
+      border-radius: 25px;
+      padding: 12px 16px;
+      cursor: pointer;
+    }
+    /* --------------- */
+    /*   BUTTON HOVER  */
+    /* --------------- */
+    .btn:hover
+    {
+      background-color: steelblue;
+    }
+    /* --------------- */
+    /*      ICON       */
+    /* --------------- */
+    .icon
+    {
+      height: 3em;
+      width: 3em;
+    }
+    /* --------------- */
+    /*   YOUTUBE ICON  */
+    /* --------------- */
+    #ytIcon:hover
+    {
+      filter: hue-rotate(325deg);
+    }
+    /* --------------- */
+    /*  FACEBOOK ICON  */
+    /* --------------- */
+    #fbIcon:hover
+    {
+      filter: hue-rotate(180deg);
+    }
+    /* --------------- */
+    /*   TWITTER ICON  */
+    /* --------------- */
+    #twIcon:hover
+    {
+      filter: hue-rotate(180deg);
+    }
+    
+  /* ~~~~~~~~~~~~~~~ */
+  /*   NAVIGATION    */
+  /* ~~~~~~~~~~~~~~~ */
+
+    /* --------------- */
+    /*      NAV        */
+    /* --------------- */
+    nav
+    {
+      text-align: center;
+      clear: both;
+      background-color: rgb(28, 24, 16);
+      border: 0px solid #dedede;
+      box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+      color: #888;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+  }
+    /* --------------- */
+    /*     NAV UL      */
+    /* --------------- */
+  nav ul 
+  {
+    margin: 0;
+    padding: 0;
+  }
+  /* --------------- */
+  /*    NAV UL LI    */
+  /* --------------- */
+  nav ul li
+  {
+    display: inline-block;
+    list-style-type: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; 
+  }
+  /* --------------- */
+  /*   NAV UL LI A   */
+  /* --------------- */
+  nav > ul > li > a
+  {
+    color: #aaa;
+    display: block;
+    line-height: 56px;
+    padding: 0 24px;
+    text-decoration: none;
+  }
+    /* --------------- */
+    /* NAV UL LI HOVER */
+    /* --------------- */
+  nav > ul > li:hover
+  {
+    background-color: rgb(112, 96, 64);
+  }
+  /* ----------------- */
+  /* NAV UL LI HOVER A */
+  /* ----------------- */
+  nav > ul > li:hover > a
+  {
+    color: rgb( 255, 255, 255 );
+  }
+  .cardCountText{
+    position: relative;
+    background-color:rgba(46, 39, 26);
+    border-style: double;
+    font-size: 3vw;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+  }
+/*##############################################################*/
+/*                      LANDSCAPE ORIENTATION                   */
+/*##############################################################*/
+/* _______________ */
+/*    LANDSCAPE    */ 
+/* _______________ */
+/* (applies to both Desktop and Mobile) */
+@media screen and (orientation: landscape) 
+{
+
+}
+/*##############################################################*/
+/*                   DESKTOP SIZED DEVICES                      */
+/*##############################################################*/
+/* _______________ */
+/*     DESKTOP     */
+/* _______________ */
+/* REDUNDANT? Perhaps change this two default CSS */
+@media only screen and (min-width: 401px)
+{
+    /* --------------- */
+    /*      BODY       */
+    /*    (desktop)    */
+    /* --------------- */
+    body
+    {
+      margin: auto;
+      position: relative;
+      background-color: darkslategray;
+      background: url(images/egyptianbg.png);
+      background-size: cover;
+      width: 80%;
+      height: 100%;
+      min-width: 500px;
+    } 
+    /* --------------- */
+    /*     SECTION     */
+    /*    (desktop)    */
+    /* --------------- */
+    section
+    {
+      color: white;
+      margin: auto; 
+      position: relative;
+      top: 1%;
+      background: rgba(46, 39, 26, 0.9);
+      width: 70%;
+      height: 77%;
+      border-radius: 25px;
+      padding: 20px;
+      vertical-align: middle;
+      text-align: center;
+      border-style: solid;
+      border-color: silver;
+    }
+    /* --------------- */
+    /*     FOOTER      */
+    /*    (desktop)    */
+    /* --------------- */
+    footer
+    {
+        position: absolute; 
+        bottom: 0;
+        text-align: center;
+        clear: both;
+        background-color: rgb(28, 24, 16);
+        border: 0px solid #dedede;
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+        color: #888;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+    }
+    /* --------------- */
+    /*    HEADER 1     */
+    /*   (desktop)     */
+    /* --------------- */
+    h1
+    {
+      height: auto;
+      width: auto;
+      font-size: 3vw;
+      padding-bottom: 0px;
+      margin: 0px;
+    }
+    #tutImg{
+      height: 15em;
+      width: 10em;
+    }
+}
+/*##############################################################*/
+/*                      TABLET SIZED DEVICES                    */
+/*##############################################################*/
+@media screen and (max-width: 800px) and (orientation: landscape){
+  section{
+    color: white;
+    margin: auto; 
+    position: relative;
+    top: 1%;
+    background: rgba(46, 39, 26, 0.9);
+    width: 70%;
+    height: 90%;
+    border-radius: 25px;
+    padding-top: 0px;
+    padding-bottom: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+    text-align: center;
+    border-style: solid;
+    border-color: silver;
+  }
+  #tutImg{
+    height: .5%;
+    width: .25%;
+  }
+  h1
+  {
+    height: auto;
+    width: auto;
+    font-size: 2vw;
+    padding-bottom: 0px;
+    margin: 0px;
+  }
+  .wrapper{
+    margin: 0px;
+    padding: 0px;
+  }
+  nav{height: 16%;
+    padding-bottom: 1%;
+  }
+  body{height: 70%;
+  padding-bottom: 14%;
+top: 3%;}
+  footer{height: 15%;}
+  #topMiddleDiv img
+  {
+    height: 100%;
+    width: auto;
+    align-content: center;
+    cursor: pointer;
+  }
+  #tutImg{
+    height: 0em;
+    width: 0em;
+  }
+} 
+/*##############################################################*/
+/*                      MOBILE SIZED DEVICES                    */
+/*##############################################################*/
+@media screen and (max-width: 768px){
+  #tutImg{
+    height: 0em;
+    width: 0em;
+  }
+  h1
+  {
+    height: auto;
+    width: auto;
+    font-size: 3vw;
+    padding-bottom: 0px;
+    margin: 0px;
+  }
+} 

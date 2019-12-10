@@ -1,0 +1,25 @@
+NOT IMPLEMENTED
+---------------
+
+1. Card Count Labels (I'm currently trying to think of a scalable way to do this, text doesn't like scaling and accounting for playerName variables
+causes for some mess with regards to how things are positioned in one browser let alone four)
+
+2. SERVER Determined Cards (Currently awaiting outside code, pseudo code is commented in misc.js)
+
+3. SERVER Player and Opponent Labels (Currently awaiting outside code, I need a good solution for issue 1 to get pseudocode)
+
+4. Visual Audio Toggle (Audio toggle works, I'll probably implement a visual aspect to show the state of the toggle, not a necessity)
+
+NOTE:
+-----
+misc.js could probably be split up as needed.
+misc.js will need to become misc.php in order to make the php call <?php echo json_encode(serverDiscardPileArr); ?>
+CSS Mobile Scaling is finnicky and doesn't seem to like to work half the time.
+I renamed generic named variables such as 'i' to 'cardCount' to make code more easily readable, this might've caused errors
+I'll try and fix any rename errors before pushing, but thought I'd let you know.
+Various images were added
+A sound file was added
+images "DECKPNG" folder was renamed to "DeckPNG", not sure why I did it but make sure yours matches otherwise the card graphics wont work.
+
+a2.html was renamed to game.html (a more appropriate name)
+home.html was created (realistically this is more of a data entry page than a main page, may change in the future.)
